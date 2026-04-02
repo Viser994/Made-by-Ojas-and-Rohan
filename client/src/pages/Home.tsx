@@ -134,7 +134,7 @@ export default function Home() {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <img
-                src="https://d2xsxph8kpxj0f.cloudfront.net/310519663435319186/c89MvGPhZSRYavxhxQ4RwM/wheel-of-consciousness-TvdkJKqD9rb8nsZiiApJoJ.webp"
+                src="https://voicesintoaction.ca/wp-content/uploads/2021/09/u5_ch3_wheelofconscience_large.jpg"
                 alt="Wheel of Consciousness - symbolic representation of passengers' experiences"
                 className="w-full rounded-lg shadow-lg hover:shadow-xl transition-shadow"
               />
