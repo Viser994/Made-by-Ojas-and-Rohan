@@ -246,16 +246,8 @@ export default function Home() {
 
 
       {/* FOOTER */}
-      <footer className="bg-foreground text-background py-12 px-4">
+      <footer className="bg-foreground text-background py-8 px-4">
         <div className="max-w-4xl mx-auto text-center">
-          <p className="mb-4">
-            This memorial website honors the passengers of the MS St. Louis and educates about
-            this shameful chapter in Canadian history.
-          </p>
-          <p className="text-sm text-background/70 mb-4">
-            Sources: United States Holocaust Memorial Museum, Pier 21 Canada, Jewish Joint
-            Distribution Committee, BBC News
-          </p>
           <p className="text-sm font-semibold text-background/80">
             Made by Ojas and Rohan 607
           </p>
