@@ -43,40 +43,41 @@
 }
 
 :root {
-  /* Memorial Design: Warm earth tones and soft blues for emotional resonance */
-  --primary: oklch(0.577 0.245 27.325); /* Warm rust/terracotta */
-  --primary-foreground: oklch(1 0 0); /* Cream white */
-  --sidebar-primary: oklch(0.577 0.245 27.325);
-  --sidebar-primary-foreground: oklch(1 0 0);
-  --chart-1: oklch(0.7 0.15 40); /* Warm ochre */
-  --chart-2: oklch(0.6 0.18 25); /* Rust */
-  --chart-3: oklch(0.55 0.16 260); /* Soft blue */
-  --chart-4: oklch(0.5 0.14 250); /* Deeper blue */
-  --chart-5: oklch(0.45 0.12 240); /* Navy */
+  /* MS St. Louis Memorial Design */
+  /* Color Palette: Teal (#154D57), Beige (#B7A08B), Soft White (#FEFAF7) */
+  --primary: #154D57; /* Teal for headings and accents */
+  --primary-foreground: #FEFAF7; /* Soft white */
+  --sidebar-primary: #154D57;
+  --sidebar-primary-foreground: #FEFAF7;
+  --chart-1: #154D57;
+  --chart-2: #B7A08B;
+  --chart-3: #8B7355;
+  --chart-4: #5A4A3A;
+  --chart-5: #2D2D2D;
   --radius: 0.65rem;
-  --background: oklch(0.98 0.001 60); /* Warm cream background */
-  --foreground: oklch(0.3 0.02 40); /* Deep warm brown */
-  --card: oklch(1 0 0); /* Pure white for cards */
-  --card-foreground: oklch(0.3 0.02 40);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.3 0.02 40);
-  --secondary: oklch(0.92 0.008 50); /* Light warm grey */
-  --secondary-foreground: oklch(0.35 0.02 40);
-  --muted: oklch(0.88 0.006 50); /* Muted warm tone */
-  --muted-foreground: oklch(0.55 0.01 40);
-  --accent: oklch(0.55 0.16 260); /* Soft blue accent */
-  --accent-foreground: oklch(1 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.985 0 0);
-  --border: oklch(0.92 0.004 50);
-  --input: oklch(0.92 0.004 50);
-  --ring: oklch(0.577 0.245 27.325);
-  --sidebar: oklch(0.98 0.001 60);
-  --sidebar-foreground: oklch(0.3 0.02 40);
-  --sidebar-accent: oklch(0.88 0.006 50);
-  --sidebar-accent-foreground: oklch(0.577 0.245 27.325);
-  --sidebar-border: oklch(0.92 0.004 50);
-  --sidebar-ring: oklch(0.577 0.245 27.325);
+  --background: #FEFAF7; /* Soft white background */
+  --foreground: #000000; /* Black text */
+  --card: #FFFFFF; /* Pure white cards */
+  --card-foreground: #000000;
+  --popover: #FFFFFF;
+  --popover-foreground: #000000;
+  --secondary: #B7A08B; /* Beige for highlights */
+  --secondary-foreground: #000000;
+  --muted: #E8E3DB; /* Light beige */
+  --muted-foreground: #666666;
+  --accent: #154D57; /* Teal accent */
+  --accent-foreground: #FFFFFF;
+  --destructive: #D32F2F;
+  --destructive-foreground: #FFFFFF;
+  --border: #B7A08B;
+  --input: #FFFFFF;
+  --ring: #154D57;
+  --sidebar: #FEFAF7;
+  --sidebar-foreground: #000000;
+  --sidebar-accent: #B7A08B;
+  --sidebar-accent-foreground: #154D57;
+  --sidebar-border: #B7A08B;
+  --sidebar-ring: #154D57;
 }
 
 .dark {
@@ -120,21 +121,27 @@
   }
   body {
     @apply bg-background text-foreground;
-    font-family: 'Lato', sans-serif;
-  }
-  h1, h2, h3, h4, h5, h6 {
     font-family: 'Playfair Display', serif;
-    font-weight: 700;
-    letter-spacing: -0.02em;
   }
   h1 {
-    @apply text-5xl md:text-6xl;
+    font-family: 'Tangerine', cursive;
+    @apply text-7xl md:text-8xl font-bold;
+    letter-spacing: 0.05em;
+    color: #154D57;
   }
   h2 {
-    @apply text-4xl md:text-5xl;
+    font-family: 'Playfair Display', serif;
+    @apply text-4xl md:text-5xl font-bold;
+    color: #154D57;
   }
   h3 {
-    @apply text-2xl md:text-3xl;
+    font-family: 'Playfair Display', serif;
+    @apply text-2xl md:text-3xl font-semibold;
+    color: #154D57;
+  }
+  p {
+    font-family: 'Playfair Display', serif;
+    @apply text-base md:text-lg leading-relaxed;
   }
   button:not(:disabled),
   [role="button"]:not([aria-disabled="true"]),
@@ -174,6 +181,40 @@
   .flex {
     min-height: 0;
     min-width: 0;
+  }
+
+  /* Fade-in animation on scroll */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .fade-in-up {
+    animation: fadeInUp 0.8s ease-out;
+  }
+
+  /* Hover effect for cards */
+  .card-hover {
+    transition: all 0.3s ease;
+  }
+
+  .card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(21, 77, 87, 0.15);
+  }
+
+  /* Parallax effect helper */
+  .parallax {
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
   }
 
   @media (min-width: 640px) {

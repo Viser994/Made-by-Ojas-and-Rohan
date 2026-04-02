@@ -1,164 +1,177 @@
 import { Card } from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
 import { ChevronDown } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 /**
  * MS St. Louis Memorial Website
- * Design Philosophy: Emotional Narrative with Textured Depth
- * - Warm earth tones (ochre, rust, terracotta) with soft blues
- * - Serif headers (Playfair Display) for emotional impact
- * - Narrative-driven layout with overlapping sections
- * - Parallax and gentle animations for immersion
+ * Modern, visually powerful memorial design
+ * Color Palette: Teal (#154D57), Beige (#B7A08B), Soft White (#FEFAF7)
+ * Typography: Tangerine (script titles), Playfair Display (body)
+ * Features: Hero section, about, memorial visual, timeline, facts, reflection
  */
 
 export default function Home() {
   const [expandedTimeline, setExpandedTimeline] = useState<number | null>(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
 
   const timelineEvents = [
     {
-      date: "May 13, 1939",
-      title: "The Voyage Begins",
+      date: "May 1939",
+      title: "Departure from Germany",
       description:
-        "The MS St. Louis departs from Hamburg, Germany with 937 Jewish passengers fleeing Nazi persecution. Most are German citizens; some are from Eastern Europe. The majority have applied for US visas and plan to stay in Cuba only temporarily.",
+        "The MS St. Louis departs from Hamburg with 937 Jewish passengers fleeing Nazi persecution.",
     },
     {
       date: "May 27, 1939",
-      title: "Arrival in Havana",
+      title: "Arrival in Cuba",
       description:
-        "The ship arrives in Havana harbor. Only 28 passengers are allowed to disembark—22 with valid US visas and 6 with valid entry documents. The remaining 908 passengers are denied entry by the Cuban government.",
+        "The ship arrives in Havana. Only 28 passengers are allowed to disembark. The remaining 908 are denied entry.",
     },
     {
       date: "June 4, 1939",
-      title: "US Refusal",
+      title: "United States Refusal",
       description:
-        "The ship sails near the Florida coast, but the US government refuses to permit the passengers to disembark. Despite media coverage and public sympathy, President Franklin D. Roosevelt does not intervene.",
+        "The ship sails near Florida, but the US government refuses to permit the passengers to disembark.",
     },
     {
       date: "June 7, 1939",
       title: "Canada's Denial",
       description:
-        "Canada officially refuses entry to the passengers. This shameful decision marks one of the darkest moments in Canadian immigration history. The ship is forced to return to Europe.",
+        "Canada officially refuses entry to the passengers. The ship is forced to return to Europe.",
     },
     {
       date: "June 1939",
       title: "Return to Europe",
       description:
-        "Jewish organizations negotiate with four European governments. Great Britain takes 288 passengers, the Netherlands 181, Belgium 214, and France 224. Of the 620 who returned to the continent, 532 became trapped when Germany invaded Western Europe in May 1940.",
+        "Jewish organizations negotiate with European governments. 288 go to Great Britain, 181 to Netherlands, 214 to Belgium, 224 to France.",
     },
     {
       date: "1940-1945",
       title: "The Holocaust",
       description:
-        "Of the 937 passengers, 254 perished in the Holocaust—84 in Belgium, 84 in Holland, and 86 in France. Only 278 of those who returned to the continent survived. The refusal of Canada, the US, and Cuba sealed the fate of hundreds.",
+        "Of the 620 passengers who returned to the continent, 532 become trapped when Germany invades. 254 perish in the Holocaust.",
     },
   ];
 
-  const poem = `In the harbor of refusal, they stood at the rail,
-937 souls seeking shelter from the gathering gale.
-From Hamburg they came with hope in their eyes,
-Fleeing the darkness beneath European skies.
-
-Cuba said no, America turned away,
-And Canada—our Canada—chose shame that day.
-"You cannot land here," the officials declared,
-While the world watched in silence, unprepared.
-
-Back to the continent, back to the night,
-Back to the terror they sought to escape from sight.
-254 would perish in the years that would come,
-Their voices now silent, their stories not sung.
-
-Remember the St. Louis, remember the shame,
-Remember the passengers we failed to reclaim.
-Remember the borders we built with our fear,
-And the refugees we turned away from here.
-
-Let their memory guide us to open our doors,
-To stand with the hunted upon distant shores.
-For in remembering their pain and their loss,
-We honor the price of indifference's cost.`;
-
   return (
     <div className="min-h-screen bg-background text-foreground">
-      {/* Hero Section */}
+      {/* HERO SECTION */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
             backgroundImage:
-              "url('https://d2xsxph8kpxj0f.cloudfront.net/310519663435319186/c89MvGPhZSRYavxhxQ4RwM/memorial-stone-hero-4EYDXHTuJfQgH7bSRvTQGt.webp')",
+              "url('https://d2xsxph8kpxj0f.cloudfront.net/310519663435319186/c89MvGPhZSRYavxhxQ4RwM/ms-st-louis-hero-JLyPciCYFJYJRBVAXAXqKY.webp')",
             backgroundAttachment: "fixed",
           }}
         >
-          <div className="absolute inset-0 bg-black/40"></div>
+          <div className="absolute inset-0 bg-black/50"></div>
         </div>
 
-        <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
-          <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 drop-shadow-lg">
+        <div
+          className={`relative z-10 text-center px-4 max-w-4xl mx-auto transition-all duration-1000 ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+          }`}
+        >
+          <h1 className="text-white drop-shadow-lg mb-4">
             Remembering the MS St. Louis
           </h1>
-          <p className="text-xl md:text-2xl text-gray-100 mb-8 drop-shadow-md">
-            A memorial to the 937 Jewish passengers denied entry by Canada in 1939
-          </p>
-          <p className="text-lg text-gray-200 drop-shadow-md">
-            "Never forget the price of indifference"
+          <h2 className="text-3xl md:text-4xl text-white drop-shadow-md mb-6">
+            Canada's Denial of Jewish Refugees (1939)
+          </h2>
+          <p className="text-lg md:text-xl text-gray-100 drop-shadow-md">
+            A digital memorial to the 937 passengers and the 254 who perished in the Holocaust
           </p>
         </div>
 
-        {/* Scroll indicator */}
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10 animate-bounce">
           <ChevronDown className="w-8 h-8 text-white" />
         </div>
       </section>
 
-      {/* Introduction Section */}
+      {/* ABOUT SECTION */}
       <section className="py-20 px-4 bg-white">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold mb-8 text-center">
-            The Voyage of the Damned
-          </h2>
-          <div className="prose prose-lg max-w-none">
-            <p className="text-lg leading-relaxed mb-6">
-              In May 1939, the German transatlantic liner MS St. Louis sailed from
-              Hamburg with 937 passengers—almost all Jewish refugees fleeing Nazi
-              persecution. They had applied for US visas and planned to stay in Cuba
-              only temporarily, hoping to eventually reach safety in America.
-            </p>
-            <p className="text-lg leading-relaxed mb-6">
-              But when the ship arrived in Havana on May 27, the Cuban government
-              refused to allow the passengers to land. The United States and Canada
-              also turned them away. Forced to return to Europe, 254 of these
-              passengers would perish in the Holocaust.
-            </p>
+          <h2 className="text-center mb-12">About the MS St. Louis</h2>
+
+          <div className="space-y-8 text-foreground">
             <p className="text-lg leading-relaxed">
-              This is their story. This is Canada's shame. This is a reminder of what
-              happens when we choose indifference over compassion.
+              In May 1939, the German transatlantic liner MS St. Louis departed from Hamburg
+              with 937 passengers—almost all Jewish refugees fleeing Nazi persecution. These
+              were ordinary people: families, children, elderly individuals, and professionals
+              who had been stripped of their possessions and rights. Most had applied for US
+              visas and planned to stay in Cuba only temporarily, hoping to eventually reach
+              safety in America. They carried with them the desperate hope that the world would
+              offer them refuge, that humanity would prevail over hatred, and that they might
+              rebuild their lives in freedom.
+            </p>
+
+            <p className="text-lg leading-relaxed">
+              But the world was not ready to help. When the MS St. Louis arrived in Havana on
+              May 27, 1939, the Cuban government refused to allow the passengers to land. The
+              United States, despite its rhetoric about freedom and democracy, turned the ship
+              away. And Canada—our Canada—made the shameful decision to deny entry to these
+              desperate refugees. Forced to return to Europe, 620 passengers were distributed
+              among European countries. When Germany invaded Western Europe in May 1940, 532 of
+              these passengers became trapped. By the end of the Holocaust, 254 of the MS St.
+              Louis passengers had perished. This tragedy stands as a stark reminder of what
+              happens when governments prioritize fear over compassion, and when the world
+              chooses indifference over action.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Timeline Section */}
-      <section
-        className="py-20 px-4"
-        style={{
-          backgroundImage:
-            "url('https://d2xsxph8kpxj0f.cloudfront.net/310519663435319186/c89MvGPhZSRYavxhxQ4RwM/historical-archive-texture-XBZJn3vuWV4fQtmk8Ap7o9.webp')",
-          backgroundAttachment: "fixed",
-          backgroundSize: "cover",
-        }}
-      >
+      {/* MEMORIAL VISUAL SECTION */}
+      <section className="py-20 px-4 bg-background">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold mb-16 text-center">
-            Timeline of Events
-          </h2>
+          <h2 className="text-center mb-12">The Wheel of Consciousness</h2>
 
-          <div className="space-y-6">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <img
+                src="https://d2xsxph8kpxj0f.cloudfront.net/310519663435319186/c89MvGPhZSRYavxhxQ4RwM/wheel-of-consciousness-TvdkJKqD9rb8nsZiiApJoJ.webp"
+                alt="Wheel of Consciousness - symbolic representation of passengers' experiences"
+                className="w-full rounded-lg shadow-lg hover:shadow-xl transition-shadow"
+              />
+            </div>
+
+            <div>
+              <p className="text-lg leading-relaxed mb-6">
+                The Wheel of Consciousness represents the inner experiences of the 937 MS St.
+                Louis passengers. At its center are the passengers themselves—individuals with
+                hopes, dreams, fears, and resilience. The concentric rings symbolize the layers
+                of their consciousness: their memories of home, their fears of persecution, their
+                desperate hope for safety, and their profound loss.
+              </p>
+
+              <p className="text-lg leading-relaxed">
+                The symbols surrounding the wheel represent the forces that shaped their fate:
+                the ship that carried them, the borders that rejected them, the hatred they fled,
+                the hope they clung to, and the candle of remembrance that keeps their memory
+                alive. This artwork invites us to see beyond statistics and recognize the profound
+                humanity of each passenger—to understand that behind the numbers were real people
+                with real dreams, real fears, and real worth.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* TIMELINE SECTION */}
+      <section className="py-20 px-4 bg-white">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-center mb-12">Timeline of Events</h2>
+
+          <div className="space-y-4">
             {timelineEvents.map((event, index) => (
-              <div key={index} className="relative">
+              <div key={index}>
                 <Card
-                  className="p-6 cursor-pointer hover:shadow-lg transition-shadow bg-white/95 backdrop-blur"
+                  className="p-6 cursor-pointer hover:shadow-lg transition-all border-l-4 border-l-secondary hover:border-l-primary"
                   onClick={() =>
                     setExpandedTimeline(
                       expandedTimeline === index ? null : index
@@ -170,10 +183,10 @@ We honor the price of indifference's cost.`;
                       <p className="text-sm font-semibold text-primary mb-2">
                         {event.date}
                       </p>
-                      <h3 className="text-2xl font-bold">{event.title}</h3>
+                      <h3 className="text-xl font-semibold">{event.title}</h3>
                     </div>
                     <ChevronDown
-                      className={`w-6 h-6 transition-transform ${
+                      className={`w-6 h-6 text-primary transition-transform flex-shrink-0 ${
                         expandedTimeline === index ? "rotate-180" : ""
                       }`}
                     />
@@ -193,183 +206,132 @@ We honor the price of indifference's cost.`;
         </div>
       </section>
 
-      {/* Poem Section */}
-      <section className="py-20 px-4 bg-white">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center">
-            A Memorial Poem
-          </h2>
-
-          <Card className="p-12 bg-gradient-to-br from-orange-50 to-blue-50 border-2 border-primary/20">
-            <div className="whitespace-pre-line text-lg leading-relaxed font-serif text-center">
-              {poem}
-            </div>
-          </Card>
-
-          <p className="text-center mt-8 text-sm text-muted-foreground italic">
-            A poem in memory of the 937 passengers and the 254 who perished
-          </p>
-        </div>
-      </section>
-
-      {/* Gallery Section */}
+      {/* KEY FACTS SECTION */}
       <section className="py-20 px-4 bg-background">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center">
-            Symbolic Remembrance
-          </h2>
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-center mb-12">Key Facts</h2>
 
           <div className="grid md:grid-cols-2 gap-8">
-            {/* Passenger Stories Abstract */}
-            <div className="overflow-hidden rounded-lg shadow-xl hover:shadow-2xl transition-shadow">
-              <img
-                src="https://d2xsxph8kpxj0f.cloudfront.net/310519663435319186/c89MvGPhZSRYavxhxQ4RwM/passenger-stories-abstract-PCMLmKLM6cQPrsMfNF5WDC.webp"
-                alt="Abstract representation of 937 passengers"
-                className="w-full h-96 object-cover"
-              />
-              <div className="p-6 bg-white">
-                <h3 className="text-2xl font-bold mb-3">937 Souls</h3>
-                <p className="text-base leading-relaxed">
-                  Each watercolor shape represents one of the 937 passengers. Their
-                  individuality, their humanity, their dreams—all denied by borders
-                  and indifference.
-                </p>
-              </div>
-            </div>
+            <Card className="p-8 bg-white border-t-4 border-t-primary hover:shadow-lg transition-shadow">
+              <h3 className="text-2xl font-semibold text-primary mb-4">
+                The Passengers
+              </h3>
+              <ul className="space-y-3 text-base">
+                <li className="flex items-start">
+                  <span className="text-primary font-bold mr-3">•</span>
+                  <span>
+                    <strong>937 passengers</strong> boarded the MS St. Louis in May 1939
+                  </span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-primary font-bold mr-3">•</span>
+                  <span>
+                    Almost all were <strong>Jewish refugees</strong> fleeing Nazi persecution
+                  </span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-primary font-bold mr-3">•</span>
+                  <span>
+                    Most had applied for <strong>US visas</strong> and planned to stay in Cuba
+                    temporarily
+                  </span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-primary font-bold mr-3">•</span>
+                  <span>
+                    Only <strong>28 passengers</strong> were allowed to disembark in Cuba
+                  </span>
+                </li>
+              </ul>
+            </Card>
 
-            {/* Information Card */}
-            <div className="bg-white rounded-lg shadow-xl p-8 flex flex-col justify-center">
-              <h3 className="text-2xl font-bold mb-6">Key Facts</h3>
-              <ul className="space-y-4 text-base">
+            <Card className="p-8 bg-white border-t-4 border-t-primary hover:shadow-lg transition-shadow">
+              <h3 className="text-2xl font-semibold text-primary mb-4">
+                The Tragedy
+              </h3>
+              <ul className="space-y-3 text-base">
                 <li className="flex items-start">
-                  <span className="text-primary font-bold mr-4">•</span>
+                  <span className="text-primary font-bold mr-3">•</span>
                   <span>
-                    <strong>937 passengers</strong> boarded the MS St. Louis in May
-                    1939
+                    <strong>USA and Canada</strong> both refused entry to the passengers
                   </span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-primary font-bold mr-4">•</span>
+                  <span className="text-primary font-bold mr-3">•</span>
                   <span>
-                    <strong>28 allowed to land</strong> in Cuba; the rest were turned
-                    away
+                    <strong>620 passengers</strong> returned to Europe and were distributed among
+                    four countries
                   </span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-primary font-bold mr-4">•</span>
+                  <span className="text-primary font-bold mr-3">•</span>
                   <span>
-                    <strong>Canada denied entry</strong> on June 7, 1939—a shameful
-                    decision
+                    When Germany invaded in 1940, <strong>532 became trapped</strong>
                   </span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-primary font-bold mr-4">•</span>
+                  <span className="text-primary font-bold mr-3">•</span>
                   <span>
                     <strong>254 passengers perished</strong> in the Holocaust
                   </span>
                 </li>
-                <li className="flex items-start">
-                  <span className="text-primary font-bold mr-4">•</span>
-                  <span>
-                    <strong>Canada apologized</strong> in 2018 for its role in this
-                    tragedy
-                  </span>
-                </li>
               </ul>
-            </div>
+            </Card>
           </div>
         </div>
       </section>
 
-      {/* Educational Section */}
+      {/* REFLECTION SECTION */}
       <section className="py-20 px-4 bg-white">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center">
-            Why This Happened
-          </h2>
-
-          <div className="space-y-8">
-            <Card className="p-8 border-l-4 border-primary">
-              <h3 className="text-2xl font-bold mb-4">The Great Depression</h3>
-              <p className="text-base leading-relaxed">
-                In the late 1930s, many countries—including Canada, the US, and
-                Cuba—were struggling with economic hardship. Unemployment was high,
-                and citizens feared that refugees would compete for scarce jobs.
-                Xenophobia and antisemitism flourished in this climate of fear.
-              </p>
-            </Card>
-
-            <Card className="p-8 border-l-4 border-primary">
-              <h3 className="text-2xl font-bold mb-4">
-                Political Pressure and Antisemitism
-              </h3>
-              <p className="text-base leading-relaxed">
-                Right-wing movements and Nazi agents actively campaigned against the
-                ship's arrival. In Cuba, a massive antisemitic rally of 40,000 people
-                demanded that the government refuse the passengers. Politicians,
-                fearing backlash, chose indifference over compassion.
-              </p>
-            </Card>
-
-            <Card className="p-8 border-l-4 border-primary">
-              <h3 className="text-2xl font-bold mb-4">
-                The Failure of Leadership
-              </h3>
-              <p className="text-base leading-relaxed">
-                President Franklin D. Roosevelt could have saved the passengers by
-                allowing them to enter the United States. Instead, he did nothing.
-                Canada's government, despite having the capacity to help, chose to
-                turn the ship away. This failure of leadership had catastrophic
-                consequences.
-              </p>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Call to Action / Memory Box */}
-      <section className="py-20 px-4 bg-gradient-to-br from-orange-100 to-blue-100">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-8">
-            How We Remember
-          </h2>
+          <h2 className="mb-12">Why This Matters Today</h2>
 
-          <p className="text-lg leading-relaxed mb-8">
-            The MS St. Louis tragedy teaches us a vital lesson: indifference in the
-            face of persecution is complicity. Every person denied refuge, every
-            border closed to the desperate, every "no" spoken without compassion—these
-            choices have real consequences.
-          </p>
+          <Card className="p-12 bg-gradient-to-br from-blue-50 to-teal-50 border-2 border-primary">
+            <blockquote className="text-2xl font-semibold text-primary mb-6 italic">
+              "Those who cannot remember the past are condemned to repeat it."
+            </blockquote>
+            <p className="text-lg leading-relaxed mb-8">
+              — George Santayana
+            </p>
 
-          <p className="text-lg leading-relaxed mb-8">
-            In 2018, Prime Minister Justin Trudeau formally apologized for Canada's
-            role in this tragedy. But an apology alone is not enough. We must
-            remember, we must educate, and we must commit to never again turning away
-            those in need.
-          </p>
+            <p className="text-lg leading-relaxed mb-8">
+              The MS St. Louis tragedy reminds us that indifference is a choice—and it has
+              consequences. Every person denied refuge, every border closed to the desperate,
+              every "no" spoken without compassion—these decisions have real human costs. In
+              2018, Prime Minister Justin Trudeau formally apologized for Canada's role in this
+              tragedy, acknowledging that "we failed them."
+            </p>
 
-          <div className="bg-white rounded-lg p-8 shadow-lg">
-            <p className="text-xl font-semibold text-primary mb-4">
+            <p className="text-lg leading-relaxed">
+              But an apology alone is not enough. We must remember the 937 passengers and the
+              254 who perished. We must educate ourselves and others about this historical event.
+              And we must commit to never again turning away those in desperate need of refuge.
+              The passengers of the MS St. Louis deserve to be remembered—not as statistics, but
+              as human beings whose lives and deaths carry profound meaning for our world today.
+            </p>
+          </Card>
+
+          <div className="mt-12 p-8 bg-primary text-white rounded-lg">
+            <p className="text-xl font-semibold">
               "Never forget. Never again."
             </p>
-            <p className="text-base text-muted-foreground">
-              In memory of the 937 passengers of the MS St. Louis, and the 254 who
-              perished in the Holocaust.
+            <p className="text-base mt-2">
+              In memory of the 937 passengers of the MS St. Louis
             </p>
           </div>
         </div>
       </section>
 
-      {/* Footer */}
+      {/* FOOTER */}
       <footer className="bg-foreground text-background py-12 px-4">
         <div className="max-w-4xl mx-auto text-center">
           <p className="mb-4">
-            This memorial website honors the passengers of the MS St. Louis and
-            educates about this shameful chapter in Canadian history.
+            This memorial website honors the passengers of the MS St. Louis and educates about
+            this shameful chapter in Canadian history.
           </p>
           <p className="text-sm text-background/70">
-            Sources: United States Holocaust Memorial Museum, Pier 21 Canada, Jewish
-            Joint Distribution Committee
+            Sources: United States Holocaust Memorial Museum, Pier 21 Canada, Jewish Joint
+            Distribution Committee, BBC News
           </p>
         </div>
       </footer>
