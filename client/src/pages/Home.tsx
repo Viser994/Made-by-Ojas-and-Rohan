@@ -129,20 +129,35 @@ export default function Home() {
       </section>
 
       {/* TIMELINE SECTION */}
-      <section className="py-20 px-4 bg-white">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-center mb-12">Timeline of Events</h2>
+      <section className="py-20 px-4 bg-background">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-center mb-16">Timeline of Events</h2>
 
-          <div className="overflow-x-auto pb-4">
-            <div className="flex gap-4 min-w-max">
+          <div className="relative">
+            {/* Horizontal line */}
+            <div className="absolute top-1/2 left-0 right-0 h-1 bg-gradient-to-r from-secondary via-primary to-secondary transform -translate-y-1/2"></div>
+
+            {/* Timeline items */}
+            <div className="flex justify-between items-center relative z-10">
               {timelineEvents.map((event, index) => (
-                <div key={index} className="flex-shrink-0 w-64">
-                  <Card className="p-6 h-full bg-white border-t-4 border-t-primary hover:shadow-lg transition-all">
-                    <p className="text-sm font-semibold text-primary mb-3">
+                <div
+                  key={index}
+                  className="flex flex-col items-center group cursor-pointer"
+                >
+                  {/* Circle node */}
+                  <div className="w-16 h-16 bg-white border-4 border-secondary rounded-full flex items-center justify-center mb-6 group-hover:border-primary group-hover:bg-primary group-hover:shadow-lg transition-all duration-300 transform group-hover:scale-125">
+                    <div className="w-8 h-8 bg-secondary rounded-full group-hover:bg-white transition-all duration-300"></div>
+                  </div>
+
+                  {/* Text content */}
+                  <div className="text-center opacity-60 group-hover:opacity-100 transition-opacity duration-300 transform group-hover:scale-105">
+                    <p className="text-xs font-semibold text-primary mb-2 uppercase tracking-wide">
                       {event.date}
                     </p>
-                    <h3 className="text-lg font-semibold mb-3">{event.title}</h3>
-                  </Card>
+                    <h3 className="text-sm font-semibold text-foreground max-w-xs">
+                      {event.title}
+                    </h3>
+                  </div>
                 </div>
               ))}
             </div>
