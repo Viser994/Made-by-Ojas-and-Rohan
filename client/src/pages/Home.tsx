@@ -74,6 +74,9 @@ export default function Home() {
           <p className="text-lg md:text-xl text-gray-100 drop-shadow-md">
             A digital memorial to the 937 passengers and the 254 who perished in the Holocaust
           </p>
+          <p className="text-sm text-gray-200 drop-shadow-md mt-8">
+            Made by Ojas and Rohan 607
+          </p>
         </div>
 
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10 animate-bounce">
@@ -249,9 +252,12 @@ export default function Home() {
             This memorial website honors the passengers of the MS St. Louis and educates about
             this shameful chapter in Canadian history.
           </p>
-          <p className="text-sm text-background/70">
+          <p className="text-sm text-background/70 mb-4">
             Sources: United States Holocaust Memorial Museum, Pier 21 Canada, Jewish Joint
             Distribution Committee, BBC News
+          </p>
+          <p className="text-sm font-semibold text-background/80">
+            Made by Ojas and Rohan 607
           </p>
         </div>
       </footer>
