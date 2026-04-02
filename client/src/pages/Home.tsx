@@ -21,27 +21,27 @@ export default function Home() {
   const timelineEvents = [
     {
       date: "May 1939",
-      title: "Ship Departs",
+      title: "A Desperate Journey Begins",
     },
     {
       date: "May 27, 1939",
-      title: "Cuba Says No",
+      title: "Doors Close in Cuba",
     },
     {
       date: "June 4, 1939",
-      title: "USA Says No",
+      title: "America Turns Away",
     },
     {
       date: "June 7, 1939",
-      title: "Canada Says No",
+      title: "Canada Refuses Entry",
     },
     {
       date: "June 1939",
-      title: "Back to Europe",
+      title: "Forced Return to Europe",
     },
     {
       date: "1940-1945",
-      title: "The Holocaust",
+      title: "Tragedy Unfolds",
     },
   ];
 
@@ -225,46 +225,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* REFLECTION SECTION */}
-      <section className="py-20 px-4 bg-white">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="mb-12">Why This Matters Today</h2>
 
-          <Card className="p-12 bg-gradient-to-br from-blue-50 to-teal-50 border-2 border-primary">
-            <blockquote className="text-2xl font-semibold text-primary mb-6 italic">
-              "Those who cannot remember the past are condemned to repeat it."
-            </blockquote>
-            <p className="text-lg leading-relaxed mb-8">
-              — George Santayana
-            </p>
-
-            <p className="text-lg leading-relaxed mb-8">
-              The MS St. Louis tragedy reminds us that indifference is a choice—and it has
-              consequences. Every person denied refuge, every border closed to the desperate,
-              every "no" spoken without compassion—these decisions have real human costs. In
-              2018, Prime Minister Justin Trudeau formally apologized for Canada's role in this
-              tragedy, acknowledging that "we failed them."
-            </p>
-
-            <p className="text-lg leading-relaxed">
-              But an apology alone is not enough. We must remember the 937 passengers and the
-              254 who perished. We must educate ourselves and others about this historical event.
-              And we must commit to never again turning away those in desperate need of refuge.
-              The passengers of the MS St. Louis deserve to be remembered—not as statistics, but
-              as human beings whose lives and deaths carry profound meaning for our world today.
-            </p>
-          </Card>
-
-          <div className="mt-12 p-8 bg-primary text-white rounded-lg">
-            <p className="text-xl font-semibold">
-              "Never forget. Never again."
-            </p>
-            <p className="text-base mt-2">
-              In memory of the 937 passengers of the MS St. Louis
-            </p>
-          </div>
-        </div>
-      </section>
 
       {/* FOOTER */}
       <footer className="bg-foreground text-background py-12 px-4">
