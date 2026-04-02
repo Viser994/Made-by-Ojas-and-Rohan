@@ -21,39 +21,27 @@ export default function Home() {
   const timelineEvents = [
     {
       date: "May 1939",
-      title: "Departure from Germany",
-      description:
-        "The MS St. Louis departs from Hamburg with 937 Jewish passengers fleeing Nazi persecution.",
+      title: "Ship Departs",
     },
     {
       date: "May 27, 1939",
-      title: "Arrival in Cuba",
-      description:
-        "The ship arrives in Havana. Only 28 passengers are allowed to disembark. The remaining 908 are denied entry.",
+      title: "Cuba Says No",
     },
     {
       date: "June 4, 1939",
-      title: "United States Refusal",
-      description:
-        "The ship sails near Florida, but the US government refuses to permit the passengers to disembark.",
+      title: "USA Says No",
     },
     {
       date: "June 7, 1939",
-      title: "Canada's Denial",
-      description:
-        "Canada officially refuses entry to the passengers. The ship is forced to return to Europe.",
+      title: "Canada Says No",
     },
     {
       date: "June 1939",
-      title: "Return to Europe",
-      description:
-        "Jewish organizations negotiate with European governments. 288 go to Great Britain, 181 to Netherlands, 214 to Belgium, 224 to France.",
+      title: "Back to Europe",
     },
     {
       date: "1940-1945",
       title: "The Holocaust",
-      description:
-        "Of the 620 passengers who returned to the continent, 532 become trapped when Germany invades. 254 perish in the Holocaust.",
     },
   ];
 
@@ -100,27 +88,7 @@ export default function Home() {
 
           <div className="space-y-8 text-foreground">
             <p className="text-lg leading-relaxed">
-              In May 1939, the German transatlantic liner MS St. Louis departed from Hamburg
-              with 937 passengers—almost all Jewish refugees fleeing Nazi persecution. These
-              were ordinary people: families, children, elderly individuals, and professionals
-              who had been stripped of their possessions and rights. Most had applied for US
-              visas and planned to stay in Cuba only temporarily, hoping to eventually reach
-              safety in America. They carried with them the desperate hope that the world would
-              offer them refuge, that humanity would prevail over hatred, and that they might
-              rebuild their lives in freedom.
-            </p>
-
-            <p className="text-lg leading-relaxed">
-              But the world was not ready to help. When the MS St. Louis arrived in Havana on
-              May 27, 1939, the Cuban government refused to allow the passengers to land. The
-              United States, despite its rhetoric about freedom and democracy, turned the ship
-              away. And Canada—our Canada—made the shameful decision to deny entry to these
-              desperate refugees. Forced to return to Europe, 620 passengers were distributed
-              among European countries. When Germany invaded Western Europe in May 1940, 532 of
-              these passengers became trapped. By the end of the Holocaust, 254 of the MS St.
-              Louis passengers had perished. This tragedy stands as a stark reminder of what
-              happens when governments prioritize fear over compassion, and when the world
-              chooses indifference over action.
+              The MS St. Louis was a German ship that carried over 900 Jewish refugees fleeing the Nazis in 1939. They hoped to find safety in Cuba and later the United States, but Cuba refused to let most of them enter. Since many countries refused, the ship had to go back to Europe, which later got invaded by the Nazis, killing most of the passengers.
             </p>
           </div>
         </div>
@@ -141,22 +109,20 @@ export default function Home() {
             </div>
 
             <div>
-              <p className="text-lg leading-relaxed mb-6">
-                The Wheel of Consciousness represents the inner experiences of the 937 MS St.
-                Louis passengers. At its center are the passengers themselves—individuals with
-                hopes, dreams, fears, and resilience. The concentric rings symbolize the layers
-                of their consciousness: their memories of home, their fears of persecution, their
-                desperate hope for safety, and their profound loss.
-              </p>
-
-              <p className="text-lg leading-relaxed">
-                The symbols surrounding the wheel represent the forces that shaped their fate:
-                the ship that carried them, the borders that rejected them, the hatred they fled,
-                the hope they clung to, and the candle of remembrance that keeps their memory
-                alive. This artwork invites us to see beyond statistics and recognize the profound
-                humanity of each passenger—to understand that behind the numbers were real people
-                with real dreams, real fears, and real worth.
-              </p>
+              <ul className="text-lg leading-relaxed space-y-4">
+                <li className="flex items-start">
+                  <span className="text-primary font-bold mr-3 text-xl">•</span>
+                  <span>The Wheel of Conscience is a memorial that remembers the 900+ Jewish refugees on the MS St. Louis who were not allowed to enter Canada in 1939.</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-primary font-bold mr-3 text-xl">•</span>
+                  <span>It has four gears with the words Hatred, Racism, Xenophobia, and Anti‑Semitism, showing how harmful ideas can spread when people don't speak up.</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-primary font-bold mr-3 text-xl">•</span>
+                  <span>The memorial is in Halifax at the Canadian Museum of Immigration, reminding everyone to treat others with fairness and kindness.</span>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
@@ -167,41 +133,19 @@ export default function Home() {
         <div className="max-w-4xl mx-auto">
           <h2 className="text-center mb-12">Timeline of Events</h2>
 
-          <div className="space-y-4">
-            {timelineEvents.map((event, index) => (
-              <div key={index}>
-                <Card
-                  className="p-6 cursor-pointer hover:shadow-lg transition-all border-l-4 border-l-secondary hover:border-l-primary"
-                  onClick={() =>
-                    setExpandedTimeline(
-                      expandedTimeline === index ? null : index
-                    )
-                  }
-                >
-                  <div className="flex items-start justify-between">
-                    <div>
-                      <p className="text-sm font-semibold text-primary mb-2">
-                        {event.date}
-                      </p>
-                      <h3 className="text-xl font-semibold">{event.title}</h3>
-                    </div>
-                    <ChevronDown
-                      className={`w-6 h-6 text-primary transition-transform flex-shrink-0 ${
-                        expandedTimeline === index ? "rotate-180" : ""
-                      }`}
-                    />
-                  </div>
-
-                  {expandedTimeline === index && (
-                    <div className="mt-4 pt-4 border-t border-border">
-                      <p className="text-base leading-relaxed">
-                        {event.description}
-                      </p>
-                    </div>
-                  )}
-                </Card>
-              </div>
-            ))}
+          <div className="overflow-x-auto pb-4">
+            <div className="flex gap-4 min-w-max">
+              {timelineEvents.map((event, index) => (
+                <div key={index} className="flex-shrink-0 w-64">
+                  <Card className="p-6 h-full bg-white border-t-4 border-t-primary hover:shadow-lg transition-all">
+                    <p className="text-sm font-semibold text-primary mb-3">
+                      {event.date}
+                    </p>
+                    <h3 className="text-lg font-semibold mb-3">{event.title}</h3>
+                  </Card>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
