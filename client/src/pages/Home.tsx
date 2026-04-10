@@ -255,7 +255,7 @@ export default function Home() {
             </Card>
           </div>
         </div>
-            </section>
+      </section>
 
       {/* WHAT CAN WE LEARN SECTION */}
       <section className="py-16 bg-white">
@@ -369,7 +369,7 @@ export default function Home() {
             Made by Ojas and Rohan 607
           </p>
         </div>
-      </footer>ter>
+      </footer>
     </div>
   );
 }
