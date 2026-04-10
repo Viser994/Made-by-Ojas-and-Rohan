@@ -1,6 +1,8 @@
 import { Card } from "@/components/ui/card";
 import { ChevronDown } from "lucide-react";
 import { useState, useEffect } from "react";
+import { useAuth } from "@/_core/hooks/useAuth";
+import { trpc } from "@/lib/trpc";
 
 /**
  * MS St. Louis Memorial Website
@@ -11,6 +13,10 @@ import { useState, useEffect } from "react";
  */
 
 export default function Home() {
+  // The userAuth hooks provides authentication state
+  // To implement login/logout functionality, simply call logout() or redirect to getLoginUrl()
+  let { user, loading, error, isAuthenticated, logout } = useAuth();
+
   const [expandedTimeline, setExpandedTimeline] = useState<number | null>(null);
   const [isVisible, setIsVisible] = useState(false);
   const [pollAnswer, setPollAnswer] = useState<string | null>(null);
