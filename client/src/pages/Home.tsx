@@ -333,16 +333,8 @@ export default function Home() {
           <h2 className="text-center mb-12" style={{fontFamily: '"Tangerine", cursive', fontSize: '48px', color: '#154D57'}}>Why We Made This Website</h2>
           
           <div className="bg-background p-8 rounded-lg border-2" style={{borderColor: '#B7A08B'}}>
-            <p className="text-lg leading-relaxed mb-6">
-              The MS St. Louis story is important, so we wanted to be unique and enhance our idea. We didn't just want to tell this story to our class, we wanted to spread awareness to the world about this tragedy.
-            </p>
-            
-            <p className="text-lg leading-relaxed mb-6">
-              This crisis killed 937 innocent people, so we wanted people to remember who they were. We want people to learn from history. And we want people to make better choices today.
-            </p>
-            
             <p className="text-lg leading-relaxed">
-              That's why we made this website - to remember the people on the MS St. Louis and to help everyone understand why it's important to help people in need.
+              Well, the MS St. Louis story is important, so we wanted to be unique and enhance our idea. We didn't just want to tell this story to our class, we wanted to spread awareness to the world about this tragedy. This crisis killed 937 innocent people, so we wanted people to remember who they were. We want people to learn from history. And we want people to make better choices today.
             </p>
           </div>
         </div>
