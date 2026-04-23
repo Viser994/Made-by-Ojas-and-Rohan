@@ -4,45 +4,38 @@ import { useState, useEffect } from "react";
 
 /**
  * MS St. Louis Memorial Website
- * Modern, visually powerful memorial design
- * Color Palette: Teal (#154D57), Beige (#B7A08B), Soft White (#FEFAF7)
- * Typography: Tangerine (script titles), Playfair Display (body)
- * Features: Hero section, about, memorial visual, timeline, facts, reflection
+ * Kid-friendly memorial design
  */
 
 export default function Home() {
-  const [expandedTimeline, setExpandedTimeline] = useState<number | null>(null);
+  const [pollAnswer, setPollAnswer] = useState<string | null>(null);
+  const [userResponse, setUserResponse] = useState("");
+  const [responses, setResponses] = useState<string[]>([]);
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     setIsVisible(true);
   }, []);
 
+  const handlePollVote = (answer: string) => {
+    setPollAnswer(answer);
+  };
+
+  const handleSubmitResponse = () => {
+    if (userResponse.trim()) {
+      setResponses([...responses, userResponse]);
+      setUserResponse("");
+      setPollAnswer(null);
+    }
+  };
+
   const timelineEvents = [
-    {
-      date: "May 1939",
-      title: "A Desperate Journey Begins",
-    },
-    {
-      date: "May 27, 1939",
-      title: "Doors Close in Cuba",
-    },
-    {
-      date: "June 4, 1939",
-      title: "America Turns Away",
-    },
-    {
-      date: "June 7, 1939",
-      title: "Canada Refuses Entry",
-    },
-    {
-      date: "June 1939",
-      title: "Forced Return to Europe",
-    },
-    {
-      date: "1940-1945",
-      title: "Tragedy Unfolds",
-    },
+    { date: "May 1939", title: "The Journey Begins" },
+    { date: "May 27, 1939", title: "Cuba Says No" },
+    { date: "June 4, 1939", title: "America Says No" },
+    { date: "June 7, 1939", title: "Canada Says No" },
+    { date: "June 1939", title: "The Ship Goes Back" },
+    { date: "1940-1945", title: "The Tragedy" },
   ];
 
   return (
@@ -69,10 +62,10 @@ export default function Home() {
             Remembering the MS St. Louis
           </h1>
           <h2 className="text-3xl md:text-4xl text-white drop-shadow-md mb-6">
-            Canada's Denial of Jewish Refugees (1939)
+            A Story of 937 Refugees (1939)
           </h2>
           <p className="text-lg md:text-xl text-gray-100 drop-shadow-md">
-            A digital memorial to the 937 passengers and the 254 who perished in the Holocaust
+            A memorial to remember the people on the MS St. Louis
           </p>
           <p className="text-sm text-gray-200 drop-shadow-md mt-8">
             Made by Ojas and Rohan 607
@@ -87,11 +80,11 @@ export default function Home() {
       {/* ABOUT SECTION */}
       <section className="py-20 px-4 bg-white">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-center mb-12">About the MS St. Louis</h2>
+          <h2 className="text-center mb-12">What Happened?</h2>
 
           <div className="space-y-8 text-foreground">
             <p className="text-lg leading-relaxed">
-              The MS St. Louis was a German ship that carried over 900 Jewish refugees fleeing the Nazis in 1939. They hoped to find safety in Cuba and later the United States, but Cuba refused to let most of them enter. Since many countries refused, the ship had to go back to Europe, which later got invaded by the Nazis, killing most of the passengers.
+              In 1939, a ship called the MS St. Louis carried 937 Jewish people who were running away from the Nazis. They were looking for a safe place to live. They tried to go to Cuba, but Cuba said no. They tried to go to America, but America said no. They even tried Canada, but Canada said no too. So the ship had to go back to Europe. When the Nazis took over, many of these people died. 254 of them were killed in the Holocaust.
             </p>
           </div>
         </div>
@@ -106,7 +99,7 @@ export default function Home() {
             <div>
               <img
                 src="https://voicesintoaction.ca/wp-content/uploads/2021/09/u5_ch3_wheelofconscience_large.jpg"
-                alt="Wheel of Consciousness - symbolic representation of passengers' experiences"
+                alt="Wheel of Consciousness - memorial to the MS St. Louis"
                 className="w-full rounded-lg shadow-lg hover:shadow-xl transition-shadow"
               />
             </div>
@@ -115,15 +108,15 @@ export default function Home() {
               <ul className="text-lg leading-relaxed space-y-4">
                 <li className="flex items-start">
                   <span className="text-primary font-bold mr-3 text-xl">•</span>
-                  <span>The Wheel of Conscience is a memorial that remembers the 900+ Jewish refugees on the MS St. Louis who were not allowed to enter Canada in 1939.</span>
+                  <span>This is a real memorial in Halifax, Canada that remembers the 937 people on the MS St. Louis.</span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-primary font-bold mr-3 text-xl">•</span>
-                  <span>It has four gears with the words Hatred, Racism, Xenophobia, and Anti‑Semitism, showing how harmful ideas can spread when people don't speak up.</span>
+                  <span>It has four gears with words like Hatred, Racism, and Prejudice. It shows how bad ideas spread when people don't speak up.</span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-primary font-bold mr-3 text-xl">•</span>
-                  <span>The memorial is in Halifax at the Canadian Museum of Immigration, reminding everyone to treat others with fairness and kindness.</span>
+                  <span>It reminds us to treat everyone fairly and be kind to people who need help.</span>
                 </li>
               </ul>
             </div>
@@ -134,7 +127,7 @@ export default function Home() {
       {/* TIMELINE SECTION */}
       <section className="py-20 px-4 bg-background">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-center mb-16">Timeline of Events</h2>
+          <h2 className="text-center mb-16">What Happened When</h2>
 
           <div className="relative">
             {/* Horizontal line */}
@@ -171,37 +164,36 @@ export default function Home() {
       {/* KEY FACTS SECTION */}
       <section className="py-20 px-4 bg-background">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-center mb-12">Key Facts</h2>
+          <h2 className="text-center mb-12">The Numbers</h2>
 
           <div className="grid md:grid-cols-2 gap-8">
             <Card className="p-8 bg-white border-t-4 border-t-primary hover:shadow-lg transition-shadow">
               <h3 className="text-2xl font-semibold text-primary mb-4">
-                The Passengers
+                The People
               </h3>
               <ul className="space-y-3 text-base">
                 <li className="flex items-start">
                   <span className="text-primary font-bold mr-3">•</span>
                   <span>
-                    <strong>937 passengers</strong> boarded the MS St. Louis in May 1939
+                    <strong>937 people</strong> were on the ship
                   </span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-primary font-bold mr-3">•</span>
                   <span>
-                    Almost all were <strong>Jewish refugees</strong> fleeing Nazi persecution
+                    Almost all were <strong>Jewish</strong> and running from the Nazis
                   </span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-primary font-bold mr-3">•</span>
                   <span>
-                    Most had applied for <strong>US visas</strong> and planned to stay in Cuba
-                    temporarily
+                    They wanted to find a safe place to live
                   </span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-primary font-bold mr-3">•</span>
                   <span>
-                    Only <strong>28 passengers</strong> were allowed to disembark in Cuba
+                    Only <strong>28 people</strong> were let off the ship in Cuba
                   </span>
                 </li>
               </ul>
@@ -209,32 +201,31 @@ export default function Home() {
 
             <Card className="p-8 bg-white border-t-4 border-t-primary hover:shadow-lg transition-shadow">
               <h3 className="text-2xl font-semibold text-primary mb-4">
-                The Tragedy
+                What Happened
               </h3>
               <ul className="space-y-3 text-base">
                 <li className="flex items-start">
                   <span className="text-primary font-bold mr-3">•</span>
                   <span>
-                    <strong>USA and Canada</strong> both refused entry to the passengers
+                    <strong>Three countries</strong> said no to the ship
                   </span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-primary font-bold mr-3">•</span>
                   <span>
-                    <strong>620 passengers</strong> returned to Europe and were distributed among
-                    four countries
+                    <strong>620 people</strong> had to go back to Europe
                   </span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-primary font-bold mr-3">•</span>
                   <span>
-                    When Germany invaded in 1940, <strong>532 became trapped</strong>
+                    When the Nazis invaded, <strong>532 people got trapped</strong>
                   </span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-primary font-bold mr-3">•</span>
                   <span>
-                    <strong>254 passengers perished</strong> in the Holocaust
+                    <strong>254 people died</strong> in the Holocaust
                   </span>
                 </li>
               </ul>
@@ -243,7 +234,119 @@ export default function Home() {
         </div>
       </section>
 
+      {/* WHAT WE CAN LEARN SECTION */}
+      <section className="py-16 bg-white">
+        <div className="container max-w-4xl">
+          <h2 className="text-center mb-12" style={{fontFamily: '"Tangerine", cursive', fontSize: '48px', color: '#154D57'}}>What Can We Learn?</h2>
+          
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              { title: "Help People in Need", desc: "The people on the MS St. Louis needed help. When countries said no, many people died. We should help people who are in danger." },
+              { title: "Stop Prejudice", desc: "People were mean to the Jewish refugees because of their religion. We must say no to bullying and treat everyone with respect." },
+              { title: "Leaders Make Choices", desc: "Leaders can save lives or hurt people. We must hold leaders accountable and make sure they make good choices." }
+            ].map((item, idx) => (
+              <div key={idx} className="p-6 bg-background rounded-lg border-2" style={{borderColor: '#B7A08B'}}>
+                <h3 className="font-bold text-lg mb-3" style={{color: '#154D57'}}>{item.title}</h3>
+                <p className="text-sm leading-relaxed">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
+      {/* INTERACTIVE POLL SECTION */}
+      <section className="py-16" style={{backgroundColor: '#FEFAF7'}}>
+        <div className="container max-w-3xl">
+          <h2 className="text-center mb-12" style={{fontFamily: '"Tangerine", cursive', fontSize: '48px', color: '#154D57'}}>What Would You Do?</h2>
+          
+          <div className="bg-white p-8 rounded-lg shadow-md mb-8">
+            <p className="text-lg mb-6 text-center leading-relaxed">Imagine you are a leader in 1939. A ship with 937 refugees arrives. They need help. What would you do?</p>
+            
+            <div className="space-y-4 mb-8">
+              {['Let them in', 'Turn them away', 'Not sure'].map((option) => (
+                <button
+                  key={option}
+                  onClick={() => handlePollVote(option)}
+                  className="w-full p-4 text-left rounded-lg border-2 transition-all hover:shadow-md"
+                  style={{
+                    borderColor: pollAnswer === option ? '#154D57' : '#B7A08B',
+                    backgroundColor: pollAnswer === option ? '#154D57' : 'white',
+                    color: pollAnswer === option ? 'white' : '#000',
+                    fontWeight: pollAnswer === option ? 'bold' : 'normal'
+                  }}
+                >
+                  {option}
+                </button>
+              ))}
+            </div>
+
+            {pollAnswer && (
+              <div className="bg-background p-4 rounded-lg mb-6 border-l-4" style={{borderColor: '#154D57'}}>
+                <p className="font-semibold mb-2">Your answer: <span style={{color: '#154D57'}}>{pollAnswer}</span></p>
+                <p className="text-sm">Now, tell us why you chose this answer below.</p>
+              </div>
+            )}
+          </div>
+
+          {/* RESPONSE INPUT */}
+          <div className="bg-white p-8 rounded-lg shadow-md mb-8 border-2" style={{borderColor: '#154D57'}}>
+            <label className="block text-lg font-bold mb-4" style={{color: '#154D57'}}>Tell us your thoughts:</label>
+            <textarea
+              value={userResponse}
+              onChange={(e) => setUserResponse(e.target.value)}
+              placeholder="Type your answer here..."
+              className="w-full p-4 border-2 rounded-lg focus:outline-none focus:ring-2 resize-none text-base"
+              style={{borderColor: '#B7A08B'}}
+              rows={6}
+            />
+            <button
+              onClick={handleSubmitResponse}
+              disabled={!pollAnswer || !userResponse.trim()}
+              className="mt-4 w-full p-4 rounded-lg font-bold text-white text-lg transition-all hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
+              style={{backgroundColor: '#154D57'}}
+            >
+              Submit Your Response
+            </button>
+          </div>
+
+          {/* VOICES SECTION */}
+          <div className="bg-white p-8 rounded-lg shadow-md">
+            <h3 className="text-2xl font-bold text-center mb-6" style={{color: '#154D57'}}>What People Think</h3>
+            {responses.length === 0 ? (
+              <p className="text-center text-gray-500">Be the first to share your thoughts...</p>
+            ) : (
+              <div className="space-y-4">
+                {responses.map((response, idx) => (
+                  <div key={idx} className="p-4 bg-background rounded-lg border-l-4" style={{borderColor: '#154D57'}}>
+                    <p className="text-sm">{response}</p>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+      </section>
+
+      {/* WHY WE MADE THIS WEBSITE SECTION */}
+      <section className="py-16 bg-white">
+        <div className="container max-w-4xl">
+          <h2 className="text-center mb-12" style={{fontFamily: '"Tangerine", cursive', fontSize: '48px', color: '#154D57'}}>Why We Made This Website</h2>
+          
+          <div className="bg-background p-8 rounded-lg border-2" style={{borderColor: '#B7A08B'}}>
+            <p className="text-lg leading-relaxed mb-6">
+              The MS St. Louis story is important, so we wanted to be unique and enhance our idea. We didn't just want to tell this story to our class, we wanted to spread awareness to the world about this tragedy.
+            </p>
+            
+            <p className="text-lg leading-relaxed mb-6">
+              This crisis killed 937 innocent people, so we wanted people to remember who they were. We want people to learn from history. And we want people to make better choices today.
+            </p>
+            
+            <p className="text-lg leading-relaxed">
+              That's why we made this website - to remember the people on the MS St. Louis and to help everyone understand why it's important to help people in need.
+            </p>
+          </div>
+        </div>
+      </section>
 
       {/* FOOTER */}
       <footer className="bg-foreground text-background py-8 px-4">
