@@ -40,14 +40,14 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-background text-foreground animate-fade-in" style={{
-      animation: 'fadeIn 1s ease-in-out'
+      animation: 'fadeIn 2.5s ease-in-out'
     }}>
       <style>{`
         @keyframes fadeIn {
-          from {
+          0% {
             opacity: 0;
           }
-          to {
+          100% {
             opacity: 1;
           }
         }
