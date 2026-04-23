@@ -241,9 +241,9 @@ export default function Home() {
           
           <div className="grid md:grid-cols-3 gap-6">
             {[
-              { title: "Help People in Need", desc: "The people on the MS St. Louis needed help. When countries said no, many people died. We should help people who are in danger." },
-              { title: "Stop Prejudice", desc: "People were mean to the Jewish refugees because of their religion. We must say no to bullying and treat everyone with respect." },
-              { title: "Leaders Make Choices", desc: "Leaders can save lives or hurt people. We must hold leaders accountable and make sure they make good choices." }
+              { title: "Help People in Need", desc: "Imagine being on that ship - scared, desperate, just wanting safety. These were real people with families and dreams. When we see someone in trouble, we should help them. It could be a friend, a classmate, or someone from another country." },
+              { title: "Stop Prejudice", desc: "The refugees were rejected just because they were Jewish. That's not fair. Prejudice happens when we judge people based on their religion, race, or where they come from. We can stop it by standing up for people and treating everyone as equals." },
+              { title: "Leaders Make Choices", desc: "The leaders of Canada, America, and Cuba made a choice - and it cost lives. Our leaders today make choices that affect real people. We can speak up, ask questions, and demand that leaders do the right thing." }
             ].map((item, idx) => (
               <div key={idx} className="p-6 bg-background rounded-lg border-2" style={{borderColor: '#B7A08B'}}>
                 <h3 className="font-bold text-lg mb-3" style={{color: '#154D57'}}>{item.title}</h3>
